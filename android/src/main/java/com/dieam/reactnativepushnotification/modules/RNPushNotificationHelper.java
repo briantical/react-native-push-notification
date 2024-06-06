@@ -322,8 +322,12 @@ public class RNPushNotificationHelper {
 
             int notificationID = Integer.parseInt(notificationIdString);
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationID, intent,
-                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE : PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context,
+                    notificationID,
+                    intent,
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            );
 
             NotificationManager notificationManager = notificationManager();
             checkOrCreateChannel(notificationManager);
@@ -366,8 +370,12 @@ public class RNPushNotificationHelper {
                     bundle.putString("action", action);
                     actionIntent.putExtra("notification", bundle);
 
-                    PendingIntent pendingActionIntent = PendingIntent.getActivity(context, notificationID, actionIntent,
-                            PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent pendingActionIntent = PendingIntent.getActivity(
+                            context,
+                            notificationID,
+                            actionIntent,
+                            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                    );
                     notification.addAction(icon, action, pendingActionIntent);
                 }
             }
