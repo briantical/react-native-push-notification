@@ -326,7 +326,7 @@ public class RNPushNotificationHelper {
                     context,
                     notificationID,
                     intent,
-                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                    PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
             );
 
             NotificationManager notificationManager = notificationManager();
@@ -374,7 +374,7 @@ public class RNPushNotificationHelper {
                             context,
                             notificationID,
                             actionIntent,
-                            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                            PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
                     );
                     notification.addAction(icon, action, pendingActionIntent);
                 }
